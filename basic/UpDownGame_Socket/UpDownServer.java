@@ -26,13 +26,11 @@ public class UpDownServer {
         private Socket socket;
         private int myId;
         private int target;
-        private int count;
 
         public Game(Socket socket, int clientId) {
             this.socket = socket;
             this.myId = clientId;
             this.target = (int) (Math.random() * 50); // 0 ~ 50
-            this.count = 5;
         }
 
         public void run() {
@@ -44,7 +42,6 @@ public class UpDownServer {
                 out.println("숫자를 입력하세요 (0 ~ 50)");
                 // out.println(target);
                 while (true) {
-                    count++;
                     String ans = in.readLine();
                     if (Integer.parseInt(ans) > 50 || Integer.parseInt(ans) < 0) {
                         out.println("범위를 벗어났습니다. 다시 입력해주세요.");
@@ -57,11 +54,6 @@ public class UpDownServer {
                         out.println("UP.");
                     else if (Integer.parseInt(ans) > target)
                         out.println("DOWN.");
-
-                    if (count == 5) {
-                        out.println("FAIL!");
-                        break;
-                    }
                 }
             } catch (IOException e) {
                 System.out.println("클라이언드 번호: " + myId + "처리 실패" + e);
