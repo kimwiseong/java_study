@@ -92,9 +92,7 @@ public class calculator extends JFrame implements ActionListener {
             result = x;
         display.setText("" + result);
     }
-
     public static void main(String[] args) {
         new calculator();
     }
-
 }
